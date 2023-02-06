@@ -34,7 +34,6 @@ struct HomeView: View {
                             Spacer ()
                         }
                         
-                        
                         RoundedRectangle(cornerRadius: 8)
                             .foregroundColor(.white)
                             .overlay(
