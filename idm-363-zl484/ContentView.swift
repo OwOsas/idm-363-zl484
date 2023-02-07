@@ -25,8 +25,6 @@ struct ContentView: View {
                 colorPalette: self.$colorPalette,
                 paletteCount: self.$paletteCount
             )
-            
-
         }
     }
 }
