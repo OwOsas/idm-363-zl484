@@ -19,7 +19,7 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 struct HomeView: View {
-    @Binding var colorPalette:[Color]
+    @Binding var colorPalette:[UIColor]
     @Binding var paletteCount:Int
     
     var body: some View {
@@ -76,7 +76,7 @@ struct HomeView: View {
                         }
                     }
                     
-                    ColorPaletteView(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount)
+                    ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount)
                     Spacer()
                 }
                 .padding(20) 

@@ -9,70 +9,30 @@ import SwiftUI
 import ColorKit
 
 struct ColorExtractView: View {
-    private var loadImg:UIImage = UIImage(named: "example")!
-
+    @State private var loadImg:UIImage = UIImage(named: "TestImg_05")!
+    
     @State private var colorArr:[Color] = []
     
     var body: some View {
         ScrollView{
-            VStack{
-                let colors = getDominantColor(img: loadImg)
-//                Text(colors.description)
-                let colorPalette = getColorPalette(ColorFrequencyArray: colors, ArrayCount: getSize(arr: colors))
-                HStack{
+            VStack(spacing:16){
+                let colorPalette = ExtractColorPalette(img: loadImg)
+
+                HStack(spacing:0){
                     ForEach(colorPalette, id: \.self){color in
                         Rectangle()
-                            .frame(width: 30, height: 30)
+//                            .frame(width: 40, height: 40)
                             .aspectRatio(1, contentMode: .fit)
                         .overlay(Color(uiColor: color))}
-                }
-                ForEach(colorPalette, id: \.self){color in
-                    Rectangle()
-                        .frame(width: 30, height: 30)
-                        .aspectRatio(1, contentMode: .fit)
-                        .overlay(Color(uiColor: color))
-                    Text("\(color.description)")
-                }
-        //        Text("\(colors[4].frequency)")
-
-                
-                Rectangle()
-                    .frame(width: 300, height: 300)
-                    .aspectRatio(1, contentMode: .fit)
-                    .overlay(Color(uiColor: colors[2].color))
-        //        self.$colorArr = extractColors(from: CIImage(image: loadImg))
-            }
+                }.mask(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(.red)
+                        .frame(
+                            minWidth: 0, maxWidth: .infinity, minHeight: 32
+                        )
+                        .padding([.bottom, .top], 10))
+            }.padding(20)
         }
-        
-    }
-    
-    func getDominantColor(img:UIImage) -> [ColorFrequency]{
-        var currentImage: UIImage! {
-            didSet {
-                guard oldValue != currentImage else { return }
-                do {
-                    dominantColors = try currentImage.dominantColorFrequencies()
-                } catch {
-                    fatalError(error.localizedDescription)
-                }
-            }
-        }
-        var dominantColors = [ColorFrequency]()
-        currentImage = img
-        return dominantColors
-    }
-    
-    func getColorPalette(ColorFrequencyArray arr: [ColorFrequency], ArrayCount count: Int) -> [UIColor]{
-        var colorPalette = [UIColor]()
-        for i in 0..<count{
-            colorPalette += [arr[i].color]
-        }
-        
-        return colorPalette
-    }
-    
-    func getSize(arr:[Any]) -> Int{
-        return arr.count
     }
 }
 

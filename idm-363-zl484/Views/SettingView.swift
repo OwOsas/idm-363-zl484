@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
-    @Binding var colorPalette: [Color]
+    @Binding var colorPalette: [UIColor]
     @Binding var paletteCount:Int
     
     var body: some View {

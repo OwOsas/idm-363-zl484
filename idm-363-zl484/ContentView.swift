@@ -11,7 +11,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var colorPalette: [Color] = [.white,.yellow,.blue,.orange,.purple]
+    @State private var colorPalette: [UIColor] = [.white,.yellow,.blue,.orange,.purple, .green]
     @State public var paletteCount = 5;
     
     var body: some View {
@@ -25,6 +25,7 @@ struct ContentView: View {
                 colorPalette: self.$colorPalette,
                 paletteCount: self.$paletteCount
             )
+            LibraryView()
         }
     }
 }
