@@ -13,10 +13,10 @@ struct LibraryView: View {
             VStack(spacing: 10){
                 VStack{
                     HStack{
-                        Text("Text")
+                        Text("Italian")
                         Spacer()
                     }
-                    Palette(colorPalette: [.blue, .red, .gray])
+                    Palette(colorPalette: [.systemGreen, .white, .red])
                 }
                 .buttonStyle(.borderedProminent)
                 .padding(10)

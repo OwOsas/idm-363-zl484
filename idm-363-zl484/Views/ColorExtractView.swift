@@ -16,7 +16,7 @@ struct ColorExtractView: View {
     var body: some View {
         ScrollView{
             VStack(spacing:16){
-                let colorPalette = ExtractColorPalette(img: loadImg)
+                let colorPalette = ExtractColorPalette(UIImg: loadImg)
 
                 HStack(spacing:0){
                     ForEach(colorPalette, id: \.self){color in

@@ -21,35 +21,44 @@ struct HomeView_Previews: PreviewProvider {
 struct HomeView: View {
     @Binding var colorPalette:[UIColor]
     @Binding var paletteCount:Int
+    @Binding var selectedImg:UIImage?
     
     var body: some View {
         NavigationView{
             ScrollView{
                 VStack(spacing: 24){
                     VStack(spacing: 16){
-                        HStack{
-                            Text("Generate")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Spacer ()
-                        }
-                        
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(.white)
-                            .overlay(
+                        VStack{
+                            if selectedImg != nil{
+                                Image(uiImage: selectedImg!)
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                            else{
+                                Spacer()
                                 Image(systemName: "photo")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 64)
-                                    .foregroundColor(.secondary)
-                            )
+                                    .frame(maxWidth: 64)
+                                    .foregroundColor(.gray)
+                                    
+                                Spacer()
+                            }
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .aspectRatio(1.6, contentMode: .fit)
+                        .background(                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(.white)
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .aspectRatio(1.6, contentMode: .fit)
                             .shadow(color: Color.black.opacity(0.1 ), radius: 5, x: 0, y: 5)
+                        )
+
                         
                         HStack(spacing: 16){
                             Button{
-                                
+                                selectedImg = UIImage(named: "TestImg_01")
+                                print("Button Clicked")
                             }label: {
                                 Spacer()
                                 Image(systemName: "folder")
@@ -76,11 +85,11 @@ struct HomeView: View {
                         }
                     }
                     
-                    ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount)
+                    ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount, selectedImg: self.$selectedImg)
                     Spacer()
                 }
-                .padding(20) 
-            }
+                .padding([.leading, .trailing], 20)
+            }.navigationTitle("Generate")
         }
         .tabItem{
             Image(systemName: "house")

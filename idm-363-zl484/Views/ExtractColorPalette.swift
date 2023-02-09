@@ -9,7 +9,7 @@ import Foundation
 import ColorKit
 import SwiftUI
 
-func ExtractColorPalette(img:UIImage) -> [UIColor]{
+func ExtractColorPalette(UIImg:UIImage) -> [UIColor]{
     var currentImage: UIImage! {
         didSet {
             guard oldValue != currentImage else { return }
@@ -21,7 +21,7 @@ func ExtractColorPalette(img:UIImage) -> [UIColor]{
         }
     }
     var dominantColors = [ColorFrequency]()
-    currentImage = img
+    currentImage = UIImg
     
     var colorPalette = [UIColor]()
     for i in 0..<dominantColors.count{

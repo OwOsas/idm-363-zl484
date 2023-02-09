@@ -16,6 +16,8 @@ struct ColorPaletteWidget_Previews: PreviewProvider {
 struct ColorPaletteWidget: View {
     @Binding var colorPalette: [UIColor]
     @Binding var paletteCount:Int
+    @Binding var selectedImg:UIImage?
+//    @State private var selectedImg:UIImage = UIImage(named: "TestImg_05")!
     
     enum exportFormat{
         case SVG, HEX, RGB
@@ -31,6 +33,14 @@ struct ColorPaletteWidget: View {
                     colorPalette: $colorPalette,
                     paletteCount: $paletteCount
                 )
+                .onChange(of: selectedImg) { newValue in
+                    print("Name changed to ")
+                    if(selectedImg != nil){
+                        colorPalette = ExtractColorPalette(UIImg: selectedImg!)
+                    }
+                }
+                
+                
             }.frame(minHeight: 64, alignment: .top)
             
             HStack{
@@ -51,16 +61,29 @@ struct ColorPaletteWidget: View {
                     Text("RGB").tag(2)
                 }
             }
-            Button{
-                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-            }label: {
-                Spacer()
-                Image(systemName: "doc.on.doc.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 28)
-                Spacer()
+            HStack{
+                Button{
+                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                }label: {
+                    Spacer()
+                    Image(systemName: "doc.on.doc.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 28)
+                    Spacer()
+                }
+                Button{
+                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                }label: {
+                    Spacer()
+                    Image(systemName: "square.and.arrow.down.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 28)
+                    Spacer()
+                }
             }
+
         }
         .buttonStyle(.borderedProminent)
         .padding(20)
