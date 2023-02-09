@@ -10,14 +10,26 @@ import SwiftUI
 struct LibraryView: View {
     var body: some View {
         NavigationView{
-            Form{
-                Section(header: Text("Default Settings")){
-                    PaletteView(colorPalette: [.blue, .red, .gray])
-                    
+            VStack(spacing: 10){
+                VStack{
+                    HStack{
+                        Text("Text")
+                        Spacer()
+                    }
+                    Palette(colorPalette: [.blue, .red, .gray])
                 }
-                //
+                .buttonStyle(.borderedProminent)
+                .padding(10)
+                .background(RoundedRectangle(cornerRadius: 16)
+                    .foregroundColor(Color.white)
+                    .shadow(color: Color.black.opacity(0.1 ), radius: 5, x: 0, y: 5))
+                
+                Spacer()
             }
-        }.tabItem{
+            .padding(20)
+            .navigationTitle(Text("Library"))
+        }
+        .tabItem{
             Image(systemName: "book")
             Text("Library")
             
@@ -31,23 +43,3 @@ struct LibraryView_Previews: PreviewProvider {
     }
 }
 
-struct PaletteView: View {
-    var colorPalette:[UIColor]
-    var body: some View {
-        HStack(spacing:0){
-            ForEach(colorPalette, id: \.self){color in
-                Rectangle()
-                //                            .frame(width: 40, height: 40)
-                    .aspectRatio(1, contentMode: .fit)
-                .overlay(Color(uiColor: color))}
-        }
-        .mask(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.red)
-                .frame(
-                    minWidth: 0, maxWidth: .infinity, minHeight: 32
-                )
-        )
-        .shadow(color: Color.black.opacity(0.1 ), radius: 5, x: 0, y: 5)
-    }
-}

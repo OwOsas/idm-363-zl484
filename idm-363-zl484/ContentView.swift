@@ -11,7 +11,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var colorPalette: [UIColor] = [.white,.yellow,.blue,.orange,.purple, .green]
+    @State private var colorPalette: [UIColor] = [.white,.yellow,.blue,.orange,.purple, .green, .magenta, .brown]
     @State public var paletteCount = 5;
     
     var body: some View {
@@ -33,12 +33,11 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-            .previewDisplayName("iPhone 8")
-
-        ContentView()
             .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
             .previewDisplayName("iPhone 14 Pro Max")
+        ContentView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            .previewDisplayName("iPhone 8")
     }
 }
 

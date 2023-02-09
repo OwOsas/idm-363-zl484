@@ -27,21 +27,17 @@ struct ColorPaletteWidget: View {
                 Text("Color Palette")
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     .font(.title3)
-                
-                //                let ColumnGrid: [GridItem] = Array(repeating: .init(.flexible()), count: paletteCount)
-                //
-                //                LazyVGrid(columns: ColumnGrid, spacing: 8) {
-                //                    ForEach(colorPalette, id: \.self){ color in
-                //                        ColorBlockView(blockColor: color)
-                //                    }
-                Palette(colorPalette: $colorPalette)
+                DynamicPalette(
+                    colorPalette: $colorPalette,
+                    paletteCount: $paletteCount
+                )
             }.frame(minHeight: 64, alignment: .top)
             
             HStack{
                 Text("Palette Size")
                 Spacer()
                 
-                Stepper(value: $paletteCount, in: 5...10) {
+                Stepper(value: $paletteCount, in: 5...$colorPalette.count) {
                     Text("\(paletteCount)")
                 }
                 
@@ -66,16 +62,15 @@ struct ColorPaletteWidget: View {
                 Spacer()
             }
         }
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
         .buttonStyle(.borderedProminent)
-        
-        
         .padding(20)
         .background(RoundedRectangle(cornerRadius: 16)
             .foregroundColor(Color.white)
             .shadow(color: Color.black.opacity(0.1 ), radius: 5, x: 0, y: 5))
     }
 }
+
+
 
 struct ColorBlockView: View {
     var blockColor: Color = Color.white
