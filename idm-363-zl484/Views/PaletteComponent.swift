@@ -17,15 +17,14 @@ struct DynamicPalette: View {
                 Rectangle()
                 .overlay(Color(uiColor: color))}
         }
-        .frame(height: 48)
+        .frame(height: 56)
         .mask(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.red)
+            RoundedRectangle(cornerRadius: 8)
                 .frame(
                     minWidth: 0, maxWidth: .infinity
                 )
         )
-        .shadow(color: Color.black.opacity(0.1 ), radius: 2, x: 0, y: 2)
+        .shadow(color: Color.black.opacity(0.1 ), radius: 2, x: 0, y: 4)
     }
 }
 
@@ -40,13 +39,13 @@ struct Palette: View {
         }
         .frame(height: 48)
         .mask(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 8)
                 .fill(.red)
                 .frame(
                     minWidth: 0, maxWidth: .infinity
                 )
         )
-        .shadow(color: Color.black.opacity(0.1 ), radius: 2, x: 0, y: 2)
+//        .shadow(color: Color.black.opacity(0.1 ), radius: 2, x: 0, y: 4)
     }
 }
 

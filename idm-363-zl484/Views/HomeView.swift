@@ -8,11 +8,12 @@
 import SwiftUI
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-
-        
         ContentView()
             .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
             .previewDisplayName("iPhone 14 Pro Max")
+        ContentView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            .previewDisplayName("iPhone 8")
     }
 }
 
@@ -23,73 +24,120 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView{
-            ScrollView{
-                VStack(spacing: 24){
-                    VStack(spacing: 16){
-                        //Image Display
+            VStack(spacing: 24){
+                VStack(spacing: 16){
+                    //Image Display
+                    if selectedImg != nil{
                         VStack{
-                            if selectedImg != nil{
-                                Image(uiImage: selectedImg!)
-                                    .resizable()
-                                    .scaledToFit()
-                            }
-                            else{
-                                Spacer()
-                                Image(systemName: "photo")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(maxWidth: 64)
-                                    .foregroundColor(.gray)
-                                    
-                                Spacer()
-                            }
+                            Image(uiImage: selectedImg!)
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(8)
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .aspectRatio(1.6, contentMode: .fit)
-                        .background(                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(.white)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .aspectRatio(1.6, contentMode: .fit)
-                            .shadow(color: Color.black.opacity(0.1 ), radius: 5, x: 0, y: 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundColor(.white)
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .aspectRatio(1.6, contentMode: .fit)
                         )
-                        //Image Display End
-
-                        
-                        HStack(spacing: 16){
-                            Button{
-                                selectedImg = UIImage(named: "TestImg_01")
-                                print("Button Clicked")
-                            }label: {
-                                Spacer()
-                                Image(systemName: "folder")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 21)
-                                Spacer()
-                            }
-                            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-                            .buttonStyle(.borderedProminent)
+                    }
+                    else{
+                        VStack{
+                            Spacer()
+                            Image(systemName: "photo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 64)
+                                .foregroundColor(Color("Border"))
                             
-                            Button{
-                                
-                            }label: {
-                                Spacer()
-                                Image(systemName: "camera")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 21)
-                                Spacer()
-                            }
-                            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
-                            .buttonStyle(.borderedProminent)
+                            Spacer()
                         }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .aspectRatio(1.6, contentMode: .fit)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundColor(.white)
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .aspectRatio(1.6, contentMode: .fit)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .strokeBorder(Color("Border"), style: StrokeStyle(lineWidth: 2, dash: [5, 2]))
+                                .foregroundColor(.clear)
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .aspectRatio(1.6, contentMode: .fit)
+                        )
                     }
                     
-                    ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount, selectedImg: self.$selectedImg)
-                    Spacer()
+                    //Image Display End
+                    
                 }
                 .padding([.leading, .trailing], 20)
-            }.navigationTitle("Generate")
+                
+                
+                ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount, selectedImg: self.$selectedImg)
+                
+                VStack(spacing: 16){
+                    Button{
+                        selectedImg = UIImage(named: "TestImg_06")
+                        print("Button Clicked")
+                    }label: {
+                        HStack(spacing: 20){
+                            Image(systemName: "photo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 28)
+                            Spacer()
+                            
+                            Text("New Image")
+                            Spacer()
+                            Spacer()
+                                .frame(width: 28)
+                            
+                        }
+                    }
+                    .background(.clear)
+                    .foregroundColor(Color("Text"))
+                    .padding([.leading, .trailing], 25)
+                    .padding([.top, .bottom], 10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .strokeBorder(Color("Border"), style: StrokeStyle(lineWidth: 2, dash: [5, 2]))
+                            .foregroundColor(.clear)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    )
+                    
+                    
+                    Button{
+                        
+                    }label: {
+                        Spacer()
+                        Text("SAVE PALETTE")
+                        Spacer()
+                    }
+                    .padding(12)
+                    .foregroundColor(.white)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(Color("Button"))
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    )
+                    
+                }
+                .padding([.leading, .trailing], 20)
+                
+            }
+            .padding([.top, .bottom], 20)
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 0,
+                maxHeight: .infinity
+            )
+            
+            
         }
         .tabItem{
             Image(systemName: "house")
