@@ -8,9 +8,7 @@
 import SwiftUI
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-            .previewDisplayName("iPhone 8")
+
         
         ContentView()
             .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
@@ -28,6 +26,7 @@ struct HomeView: View {
             ScrollView{
                 VStack(spacing: 24){
                     VStack(spacing: 16){
+                        //Image Display
                         VStack{
                             if selectedImg != nil{
                                 Image(uiImage: selectedImg!)
@@ -53,6 +52,7 @@ struct HomeView: View {
                             .aspectRatio(1.6, contentMode: .fit)
                             .shadow(color: Color.black.opacity(0.1 ), radius: 5, x: 0, y: 5)
                         )
+                        //Image Display End
 
                         
                         HStack(spacing: 16){
