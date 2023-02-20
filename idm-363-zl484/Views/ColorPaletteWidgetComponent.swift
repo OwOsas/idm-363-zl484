@@ -61,7 +61,7 @@ struct ColorPaletteWidget: View {
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(Color("Border"), lineWidth: 2)
                             )
-                        Stepper(value: $paletteCount, in: 5...$colorPalette.count){}
+                        Stepper(value: $paletteCount, in: 0...$colorPalette.count){}
                     }
                 }
                 
@@ -105,8 +105,6 @@ struct ColorPaletteWidget: View {
             .shadow(color: Color.black.opacity(0.1 ), radius: 5, x: 0, y: -10))
     }
 }
-
-
 
 struct ColorBlockView: View {
     var blockColor: Color = Color.white

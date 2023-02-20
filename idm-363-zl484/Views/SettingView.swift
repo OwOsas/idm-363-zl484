@@ -24,7 +24,7 @@ struct SettingView: View {
                         Text("RGB").tag(2)
                     }
                     
-                    Stepper(value: $paletteCount, in: 5...$colorPalette.count) {
+                    Stepper(value: $paletteCount, in: 0...$colorPalette.count) {
                         Text("Palette Count \(paletteCount)")
                     }
                 }

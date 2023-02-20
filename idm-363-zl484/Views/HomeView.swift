@@ -22,9 +22,11 @@ struct HomeView: View {
     @Binding var paletteCount:Int
     @Binding var selectedImg:UIImage?
     
+    @State var isPickerShowing = false
+    
     var body: some View {
         NavigationView{
-            VStack(spacing: 24){
+            VStack(spacing: 28){
                 VStack(spacing: 16){
                     //Image Display
                     if selectedImg != nil{
@@ -81,7 +83,8 @@ struct HomeView: View {
                 
                 VStack(spacing: 16){
                     Button{
-                        selectedImg = UIImage(named: "TestImg_06")
+//                        selectedImg = UIImage(named: "TestImg_06")
+                        isPickerShowing = true
                         print("Button Clicked")
                     }label: {
                         HStack(spacing: 20){
@@ -126,6 +129,9 @@ struct HomeView: View {
                     )
                     
                 }
+                .sheet(isPresented: $isPickerShowing, content: {
+                    ImagePicker(selectedImg: $selectedImg)
+                })
                 .padding([.leading, .trailing], 20)
                 
             }

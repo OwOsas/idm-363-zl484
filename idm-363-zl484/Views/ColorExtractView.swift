@@ -6,15 +6,61 @@
 //
 
 import SwiftUI
+import PhotosUI
 import ColorKit
 
 struct ColorExtractView: View {
     @State private var loadImg:UIImage = UIImage(named: "TestImg_05")!
     
     @State private var colorArr:[Color] = []
+    @State var isPickerShowing = false
+    
+    @State var selectedItems: [PhotosPickerItem] = []
+    @State var data: Data?
     
     var body: some View {
         ScrollView{
+            VStack{
+//                Button{
+//                    isPickerShowing = true
+//                }label: {
+//                    Text("Show Gallery")
+//                }
+                if let data = data, let uiimage = UIImage(data:data){
+                    Image(uiImage: uiimage)
+                        .resizable()
+                        .scaledToFit()
+                }
+                
+                
+                PhotosPicker(
+                    selection: $selectedItems,
+                    maxSelectionCount: 1,
+                    matching: .images
+                ){
+                    Text("Pick")
+                }.onChange(of: selectedItems){newVal in
+                    guard let item = selectedItems.first else{
+                        return
+                    }
+                    item.loadTransferable(type: Data.self){ result in
+                        switch result {
+                        case .success(let data):
+                            if let data = data{
+                                self.data = data
+                            }
+                            else{
+                                print("Data is nil")
+                            }
+                        case .failure(let failure):
+                            fatalError("\(failure)")
+                        }
+                    }
+                }
+            }
+
+            
+            
             VStack(spacing:16){
                 let colorPalette = ExtractColorPalette(UIImg: loadImg)
 
