@@ -18,6 +18,7 @@
 		3870FBEB2991B8AB005146A5 /* ColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3870FBEA2991B8AB005146A5 /* ColorKit */; };
 		38ACFCFC299C89AA00082C2A /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFCFB299C89AA00082C2A /* StyleGuide.swift */; };
 		38ACFCFE29A425D200082C2A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFCFD29A425D200082C2A /* ImagePicker.swift */; };
+		38ACFD0129A72ACD00082C2A /* ColorToValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFD0029A72ACD00082C2A /* ColorToValue.swift */; };
 		38C6E211298B3A5F00F0ABEC /* idm_363_zl484App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E210298B3A5F00F0ABEC /* idm_363_zl484App.swift */; };
 		38C6E213298B3A5F00F0ABEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E212298B3A5F00F0ABEC /* ContentView.swift */; };
 		38C6E215298B3A6000F0ABEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C6E214298B3A6000F0ABEC /* Assets.xcassets */; };
@@ -35,6 +36,8 @@
 		3819587029947477007D9019 /* PaletteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteComponent.swift; sourceTree = "<group>"; };
 		38ACFCFB299C89AA00082C2A /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		38ACFCFD29A425D200082C2A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		38ACFCFF29A7261600082C2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		38ACFD0029A72ACD00082C2A /* ColorToValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorToValue.swift; sourceTree = "<group>"; };
 		38C6E20D298B3A5F00F0ABEC /* idm-363-zl484.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "idm-363-zl484.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C6E210298B3A5F00F0ABEC /* idm_363_zl484App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = idm_363_zl484App.swift; sourceTree = "<group>"; };
 		38C6E212298B3A5F00F0ABEC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,7 +71,9 @@
 		3819586C2994686C007D9019 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				38ACFCFD29A425D200082C2A /* ImagePicker.swift */,
 				3819586D29946888007D9019 /* ExtractColorPalette.swift */,
+				38ACFD0029A72ACD00082C2A /* ColorToValue.swift */,
 			);
 			name = Functions;
 			path = Views;
@@ -79,7 +84,6 @@
 			children = (
 				380A97FB298B45CC00CD155F /* ColorPaletteWidgetComponent.swift */,
 				3819587029947477007D9019 /* PaletteComponent.swift */,
-				38ACFCFD29A425D200082C2A /* ImagePicker.swift */,
 			);
 			name = Components;
 			path = Views;
@@ -112,6 +116,7 @@
 		38C6E20F298B3A5F00F0ABEC /* idm-363-zl484 */ = {
 			isa = PBXGroup;
 			children = (
+				38ACFCFF29A7261600082C2A /* Info.plist */,
 				38ACFCFA299C899300082C2A /* Style */,
 				38C6E210298B3A5F00F0ABEC /* idm_363_zl484App.swift */,
 				38C6E212298B3A5F00F0ABEC /* ContentView.swift */,
@@ -212,6 +217,7 @@
 				380A97FA298B458100CD155F /* HomeView.swift in Sources */,
 				380A9806298B785300CD155F /* SettingView.swift in Sources */,
 				3819586E29946889007D9019 /* ExtractColorPalette.swift in Sources */,
+				38ACFD0129A72ACD00082C2A /* ColorToValue.swift in Sources */,
 				38C6E213298B3A5F00F0ABEC /* ContentView.swift in Sources */,
 				380A980A298C0E4800CD155F /* PaletteGenerator.swift in Sources */,
 				3819587129947477007D9019 /* PaletteComponent.swift in Sources */,
@@ -346,17 +352,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"idm-363-zl484/Preview Content\"";
+				DEVELOPMENT_TEAM = W3NH789DNS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "idm-363-zl484/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Photo Palette";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera to capture image in order to generate color palette";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,6 +375,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sylar-li.idm-363-zl484";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -378,17 +390,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"idm-363-zl484/Preview Content\"";
+				DEVELOPMENT_TEAM = W3NH789DNS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "idm-363-zl484/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Photo Palette";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera to capture image in order to generate color palette";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,6 +413,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sylar-li.idm-363-zl484";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

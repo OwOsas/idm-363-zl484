@@ -23,126 +23,147 @@ struct HomeView: View {
     @Binding var selectedImg:UIImage?
     
     @State var isPickerShowing = false
+    @State var isCameraShowing = false
+    @State var isActionSheetShowing = false
     
     var body: some View {
         NavigationView{
-            VStack(spacing: 28){
-                VStack(spacing: 16){
-                    //Image Display
-                    if selectedImg != nil{
-                        VStack{
-                            Image(uiImage: selectedImg!)
-                                .resizable()
-                                .scaledToFit()
-                                .cornerRadius(8)
+            ZStack{
+                VStack(spacing: 28){
+                    VStack(spacing: 16){
+                        //Image Display
+                        if selectedImg != nil{
+                            VStack{
+                                Image(uiImage: selectedImg!)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(8)
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .aspectRatio(1.6, contentMode: .fit)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundColor(.white)
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(1.6, contentMode: .fit)
+                            )
                         }
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .aspectRatio(1.6, contentMode: .fit)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(.white)
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .aspectRatio(1.6, contentMode: .fit)
-                        )
+                        else{
+                            VStack{
+                                Spacer()
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxWidth: 64)
+                                    .foregroundColor(Color("Border"))
+                                
+                                Spacer()
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .aspectRatio(1.6, contentMode: .fit)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundColor(.white)
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(1.6, contentMode: .fit)
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .strokeBorder(Color("Border"), style: StrokeStyle(lineWidth: 2, dash: [5, 2]))
+                                    .foregroundColor(.clear)
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(1.6, contentMode: .fit)
+                            )
+                        }
+                        
+                        //Image Display End
+                        
                     }
-                    else{
-                        VStack{
-                            Spacer()
-                            Image(systemName: "photo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: 64)
-                                .foregroundColor(Color("Border"))
-                            
-                            Spacer()
+                    .padding([.leading, .trailing], 20)
+                    
+                    
+                    ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount, selectedImg: self.$selectedImg)
+                    
+                    VStack(spacing: 16){
+                        Button{
+                            //                        selectedImg = UIImage(named: "TestImg_06")
+                            isActionSheetShowing = true
+                            print("Button Clicked")
+                        }label: {
+                            HStack(spacing: 20){
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 28)
+                                Spacer()
+                                
+                                Text("New Image")
+                                Spacer()
+                                Spacer()
+                                    .frame(width: 28)
+                                
+                            }
                         }
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .aspectRatio(1.6, contentMode: .fit)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(.white)
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .aspectRatio(1.6, contentMode: .fit)
-                        )
+                        .background(.clear)
+                        .foregroundColor(Color("Text"))
+                        .padding([.leading, .trailing], 25)
+                        .padding([.top, .bottom], 10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
                                 .strokeBorder(Color("Border"), style: StrokeStyle(lineWidth: 2, dash: [5, 2]))
                                 .foregroundColor(.clear)
                                 .frame(minWidth: 0, maxWidth: .infinity)
-                                .aspectRatio(1.6, contentMode: .fit)
                         )
-                    }
-                    
-                    //Image Display End
-                    
-                }
-                .padding([.leading, .trailing], 20)
-                
-                
-                ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount, selectedImg: self.$selectedImg)
-                
-                VStack(spacing: 16){
-                    Button{
-//                        selectedImg = UIImage(named: "TestImg_06")
-                        isPickerShowing = true
-                        print("Button Clicked")
-                    }label: {
-                        HStack(spacing: 20){
-                            Image(systemName: "photo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 28)
-                            Spacer()
-                            
-                            Text("New Image")
-                            Spacer()
-                            Spacer()
-                                .frame(width: 28)
-                            
-                        }
-                    }
-                    .background(.clear)
-                    .foregroundColor(Color("Text"))
-                    .padding([.leading, .trailing], 25)
-                    .padding([.top, .bottom], 10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .strokeBorder(Color("Border"), style: StrokeStyle(lineWidth: 2, dash: [5, 2]))
-                            .foregroundColor(.clear)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    )
-                    
-                    
-                    Button{
                         
-                    }label: {
-                        Spacer()
-                        Text("SAVE PALETTE")
-                        Spacer()
+                        
+                        Button{
+                            
+                        }label: {
+                            Spacer()
+                            Text("SAVE PALETTE")
+                            Spacer()
+                        }
+                        .padding(12)
+                        .foregroundColor(.white)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundColor(Color("Button"))
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                        )
+                        
                     }
-                    .padding(12)
-                    .foregroundColor(.white)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(Color("Button"))
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    )
-                    
+                    .padding([.leading, .trailing], 20)
+                    .actionSheet(isPresented: $isActionSheetShowing, content: {()-> ActionSheet in
+                        ActionSheet(title: Text("New Image"),
+                                    buttons: [
+                                        .default(
+                                            Text("Camera"), action: {
+                                                isCameraShowing = true
+                                            }),
+                                        .default(
+                                            Text("Gallery"), action: {
+                                                isPickerShowing = true
+                                            }),
+                                        .cancel()
+                                    ]
+                        )
+                        
+                    })
+                    .sheet(isPresented: $isPickerShowing, content: {
+                        ImagePicker(selectedImg: $selectedImg, isCamera: false)
+                    })
+                    .fullScreenCover(isPresented: $isCameraShowing, content: {
+                        ImagePicker(selectedImg: $selectedImg, isCamera: true)
+                    })
                 }
-                .sheet(isPresented: $isPickerShowing, content: {
-                    ImagePicker(selectedImg: $selectedImg)
-                })
-                .padding([.leading, .trailing], 20)
-                
+                .padding([.top, .bottom], 20)
+                .frame(
+                    minWidth: 0,
+                    maxWidth: .infinity,
+                    minHeight: 0,
+                    maxHeight: .infinity
+                )
             }
-            .padding([.top, .bottom], 20)
-            .frame(
-                minWidth: 0,
-                maxWidth: .infinity,
-                minHeight: 0,
-                maxHeight: .infinity
-            )
-            
             
         }
         .tabItem{

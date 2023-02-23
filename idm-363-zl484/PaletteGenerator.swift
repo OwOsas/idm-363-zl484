@@ -27,5 +27,6 @@ func extractColors(from image: CIImage) -> [CIColor] {
             colors.append(color)
         }
     }
+    print(colors)
     return colors
 }

@@ -20,6 +20,7 @@ struct ColorPaletteWidget: View {
     @Binding var paletteCount:Int
     @Binding var selectedImg:UIImage?
     //    @State private var selectedImg:UIImage = UIImage(named: "TestImg_05")!
+    @State var colorArray:[String]?
     
     enum exportFormat{
         case SVG, HEX, RGB
@@ -40,6 +41,8 @@ struct ColorPaletteWidget: View {
                         print("Name changed to ")
                         if(selectedImg != nil){
                             colorPalette = ExtractColorPalette(UIImg: selectedImg!)
+                            
+                            
                         }
                     }
                 }
@@ -51,8 +54,6 @@ struct ColorPaletteWidget: View {
                         .frame(maxWidth: .infinity)
                     HStack{
                         Spacer()
-                        //                    TextField("\(paletteCount)", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                        //                        .keyboardType(.decimalPad)
                         Text("\(paletteCount)")
                         
                             .padding([.leading, .trailing], 16)
@@ -64,6 +65,7 @@ struct ColorPaletteWidget: View {
                         Stepper(value: $paletteCount, in: 0...$colorPalette.count){}
                     }
                 }
+                Text("")
                 
                 HStack{
                     Text("Copy Colors")
@@ -83,7 +85,9 @@ struct ColorPaletteWidget: View {
                     )
                     
                     
-                    Button{}label: {
+                    Button{
+                        
+                    }label: {
                         Image(systemName: "doc.on.doc")
                     }
                     .padding([.leading, .trailing], 16)
