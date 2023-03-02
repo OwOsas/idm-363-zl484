@@ -21,6 +21,9 @@ struct ColorPaletteWidget: View {
     @Binding var selectedImg:UIImage?
     //    @State private var selectedImg:UIImage = UIImage(named: "TestImg_05")!
     @State var colorArray:[String]?
+    @State var failedToCopyAlert: Bool = false
+    
+    private let pasteboard = UIPasteboard.general
     
     enum exportFormat{
         case SVG, HEX, RGB
@@ -42,10 +45,20 @@ struct ColorPaletteWidget: View {
                         if(selectedImg != nil){
                             colorPalette = ExtractColorPalette(UIImg: selectedImg!)
                             
-                            
                         }
                     }
                 }
+                
+                //                HStack{
+                //                    Text("Test")
+                //                    ForEach(colorPalette, id: \.self){theColor in
+                //                        //                        Rectangle()
+                //                        //                        .overlay(Color(uiColor: theColor))
+                ////                        Text(Color(uiColor: theColor).toHex()!)
+                //                    }
+                //
+                //
+                //                }
                 
                 HStack{
                     Text("Palette Size")
@@ -86,7 +99,26 @@ struct ColorPaletteWidget: View {
                     
                     
                     Button{
+                        //                        print(arrClrToHex(ColorArr: colorPalette) ?? "ERRO Converting")
+                        var arr:[String] = []
+                        for color in colorPalette{
+                            arr.append(toHex(color:Color(uiColor: color)) ?? "<Cannot Convert>")
+                        }
                         
+                        if !arr.contains("<Cannot Convert>") && !arr.contains("") && colorPalette.count > 0{
+                            var copyText = ""
+                            
+                            for ele in arr {
+                                copyText += "#\(ele) "
+                                print("\(ele)")
+                            }
+                            
+                            pasteboard.string = copyText
+                            
+                        }
+                        else{
+                            failedToCopyAlert = true
+                        }
                     }label: {
                         Image(systemName: "doc.on.doc")
                     }
@@ -98,6 +130,9 @@ struct ColorPaletteWidget: View {
                             .foregroundColor(Color("Border"))
                             .frame(minWidth: 0, maxWidth: .infinity)
                     )
+                    .alert("Cannot Copy Palette", isPresented: $failedToCopyAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
                 }
             }
             

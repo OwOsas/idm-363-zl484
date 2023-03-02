@@ -13,21 +13,40 @@ struct SettingView: View {
     
     var body: some View {
         NavigationView{
-            Form{
-                Section(header: Text("Color Mode")){
-                    Toggle(isOn: .constant(true),
-                           label: {Text("Dark Mode")})
-                }
-                Section(header: Text("Default Settings")){
-                    Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Copy Format")) {
-                        Text("HEX").tag(1)
-                        Text("RGB").tag(2)
-                    }
-                    
-                    Stepper(value: $paletteCount, in: 0...$colorPalette.count) {
-                        Text("Palette Count \(paletteCount)")
+            VStack{
+                Form{
+                    Section(header: Text("Default Settings")){
+                        Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Copy Format")) {
+                            Text("HEX").tag(1)
+                            Text("RGB").tag(2)
+                        }
+                        
+                        Stepper(value: $paletteCount, in: 0...$colorPalette.count) {
+                            Text("Palette Count \(paletteCount)")
+                        }
                     }
                 }
+                Spacer()
+                
+                VStack{
+                    Button{
+                        
+                    }label: {
+                        Spacer()
+                        Text("DELETE LIBRARY")
+                        Spacer()
+                    }
+                    .padding(12)
+                    .foregroundColor(.white)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(Color("Cancel"))
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    )
+                }.padding(20)
+                
+                
+
             }.navigationTitle(Text("Settings"))
         }
         .tabItem{

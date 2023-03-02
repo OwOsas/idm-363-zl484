@@ -23,6 +23,8 @@
 		38C6E213298B3A5F00F0ABEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C6E212298B3A5F00F0ABEC /* ContentView.swift */; };
 		38C6E215298B3A6000F0ABEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C6E214298B3A6000F0ABEC /* Assets.xcassets */; };
 		38C6E218298B3A6000F0ABEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C6E217298B3A6000F0ABEC /* Preview Assets.xcassets */; };
+		38C7490929AEC3520087D22E /* UserLibraryDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38C7490729AEC3520087D22E /* UserLibraryDataModel.xcdatamodeld */; };
+		38C7494629AECD940087D22E /* UserLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C7494529AECD940087D22E /* UserLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		38C6E212298B3A5F00F0ABEC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		38C6E214298B3A6000F0ABEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38C6E217298B3A6000F0ABEC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		38C7490829AEC3520087D22E /* UserLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserLibrary.xcdatamodel; sourceTree = "<group>"; };
+		38C7494529AECD940087D22E /* UserLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		3819586C2994686C007D9019 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				380A9809298C0E4800CD155F /* PaletteGenerator.swift */,
 				38ACFCFD29A425D200082C2A /* ImagePicker.swift */,
 				3819586D29946888007D9019 /* ExtractColorPalette.swift */,
 				38ACFD0029A72ACD00082C2A /* ColorToValue.swift */,
@@ -120,12 +125,13 @@
 				38ACFCFA299C899300082C2A /* Style */,
 				38C6E210298B3A5F00F0ABEC /* idm_363_zl484App.swift */,
 				38C6E212298B3A5F00F0ABEC /* ContentView.swift */,
-				380A9809298C0E4800CD155F /* PaletteGenerator.swift */,
 				3819586F299473DB007D9019 /* Components */,
 				3819586C2994686C007D9019 /* Functions */,
 				380A9808298C073C00CD155F /* Views */,
 				38C6E214298B3A6000F0ABEC /* Assets.xcassets */,
 				38C6E216298B3A6000F0ABEC /* Preview Content */,
+				38C7490729AEC3520087D22E /* UserLibraryDataModel.xcdatamodeld */,
+				38C7494529AECD940087D22E /* UserLibrary.swift */,
 			);
 			path = "idm-363-zl484";
 			sourceTree = "<group>";
@@ -224,8 +230,10 @@
 				38ACFCFC299C89AA00082C2A /* StyleGuide.swift in Sources */,
 				3819586B29940E99007D9019 /* LibraryView.swift in Sources */,
 				380A97FC298B45CC00CD155F /* ColorPaletteWidgetComponent.swift in Sources */,
+				38C7494629AECD940087D22E /* UserLibrary.swift in Sources */,
 				38ACFCFE29A425D200082C2A /* ImagePicker.swift in Sources */,
 				38C6E211298B3A5F00F0ABEC /* idm_363_zl484App.swift in Sources */,
+				38C7490929AEC3520087D22E /* UserLibraryDataModel.xcdatamodeld in Sources */,
 				380A980C298C0E9B00CD155F /* ColorExtractView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +472,19 @@
 			productName = ColorKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		38C7490729AEC3520087D22E /* UserLibraryDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				38C7490829AEC3520087D22E /* UserLibrary.xcdatamodel */,
+			);
+			currentVersion = 38C7490829AEC3520087D22E /* UserLibrary.xcdatamodel */;
+			path = UserLibraryDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 38C6E205298B3A5F00F0ABEC /* Project object */;
 }
