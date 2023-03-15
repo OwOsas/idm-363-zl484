@@ -44,6 +44,8 @@ struct SettingView: View {
                             .frame(minWidth: 0, maxWidth: .infinity)
                     )
                 }.padding(20)
+                
+                
 
             }.navigationTitle(Text("Settings"))
         }
