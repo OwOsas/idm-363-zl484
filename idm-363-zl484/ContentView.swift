@@ -25,7 +25,7 @@ struct ContentView: View {
                 selectedImg: self.$selectedImg
             )
             
-            LibraryView()
+//            LibraryView()
             
             SettingView(
                 colorPalette: self.$colorPalette,

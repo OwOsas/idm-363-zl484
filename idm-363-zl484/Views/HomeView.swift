@@ -26,6 +26,8 @@ struct HomeView: View {
     @State var isCameraShowing = false
     @State var isActionSheetShowing = false
     
+    private let pastboard = UIPasteboard.general
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -116,30 +118,30 @@ struct HomeView: View {
                         )
                         
                         
-                        Button{
-                            
-                        }label: {
-                            Spacer()
-                            Text("SAVE PALETTE")
-                            Spacer()
-                        }
-                        .padding(12)
-                        .foregroundColor(.white)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(Color("Button"))
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                        )
+//                        Button{
+//
+//                        }label: {
+//                            Spacer()
+//                            Text("SAVE PALETTE")
+//                            Spacer()
+//                        }
+//                        .padding(12)
+//                        .foregroundColor(.white)
+//                        .background(
+//                            RoundedRectangle(cornerRadius: 8)
+//                                .foregroundColor(Color("Button"))
+//                                .frame(minWidth: 0, maxWidth: .infinity)
+//                        )
                         
                     }
                     .padding([.leading, .trailing], 20)
                     .actionSheet(isPresented: $isActionSheetShowing, content: {()-> ActionSheet in
                         ActionSheet(title: Text("New Image"),
                                     buttons: [
-                                        .default(
-                                            Text("Camera"), action: {
-                                                isCameraShowing = true
-                                            }),
+//                                        .default(
+//                                            Text("Camera"), action: {
+//                                                isCameraShowing = true
+//                                            }),
                                         .default(
                                             Text("Gallery"), action: {
                                                 isPickerShowing = true

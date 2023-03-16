@@ -28,25 +28,22 @@ struct SettingView: View {
                 }
                 Spacer()
                 
-                VStack{
-                    Button{
-                        
-                    }label: {
-                        Spacer()
-                        Text("DELETE LIBRARY")
-                        Spacer()
-                    }
-                    .padding(12)
-                    .foregroundColor(.white)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(Color("Cancel"))
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    )
-                }.padding(20)
-                
-                
-
+//                VStack{
+//                    Button{
+//
+//                    }label: {
+//                        Spacer()
+//                        Text("DELETE LIBRARY")
+//                        Spacer()
+//                    }
+//                    .padding(12)
+//                    .foregroundColor(.white)
+//                    .background(
+//                        RoundedRectangle(cornerRadius: 8)
+//                            .foregroundColor(Color("Cancel"))
+//                            .frame(minWidth: 0, maxWidth: .infinity)
+//                    )
+//                }.padding(20)
             }.navigationTitle(Text("Settings"))
         }
         .tabItem{

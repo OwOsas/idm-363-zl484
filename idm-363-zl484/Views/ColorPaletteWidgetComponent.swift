@@ -20,8 +20,10 @@ struct ColorPaletteWidget: View {
     @Binding var paletteCount:Int
     @Binding var selectedImg:UIImage?
     //    @State private var selectedImg:UIImage = UIImage(named: "TestImg_05")!
+    @State var palette: [UIColor] = []
     @State var colorArray:[String]?
     @State var failedToCopyAlert: Bool = false
+    @State var cannotExtract: Bool = false
     
     private let pasteboard = UIPasteboard.general
     
@@ -43,8 +45,13 @@ struct ColorPaletteWidget: View {
                     .onChange(of: selectedImg) { newValue in
                         print("Name changed to ")
                         if(selectedImg != nil){
-                            colorPalette = ExtractColorPalette(UIImg: selectedImg!)
-                            
+                            palette = ExtractColorPalette(UIImg: selectedImg!)
+                        }
+                        if(palette.count <= 0){
+                            cannotExtract = true
+                        }
+                        else{
+                            colorPalette = palette
                         }
                     }
                 }
@@ -130,8 +137,13 @@ struct ColorPaletteWidget: View {
                             .foregroundColor(Color("Border"))
                             .frame(minWidth: 0, maxWidth: .infinity)
                     )
-                    .alert("Cannot Copy Palette", isPresented: $failedToCopyAlert) {
+                    .alert("Palette Is Empty", isPresented: $failedToCopyAlert) {
                         Button("OK", role: .cancel) { }
+                    }
+                    .alert(isPresented: $cannotExtract) {
+                        Alert(title: Text("Cannot Extract!"),
+                              message: Text("Image format not compatible"),
+                              dismissButton: .default(Text("Got it!")))
                     }
                 }
             }
