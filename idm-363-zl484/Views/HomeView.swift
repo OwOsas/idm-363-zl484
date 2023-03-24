@@ -22,9 +22,10 @@ struct HomeView: View {
     @Binding var paletteCount:Int
     @Binding var selectedImg:UIImage?
     
-    @State var isPickerShowing = false
+    @State var isPickerShowing = false 
     @State var isCameraShowing = false
     @State var isActionSheetShowing = false
+    @State var isNotificationShowing = false
     
     private let pastboard = UIPasteboard.general
     
@@ -84,7 +85,7 @@ struct HomeView: View {
                     .padding([.leading, .trailing], 20)
                     
                     
-                    ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount, selectedImg: self.$selectedImg)
+                    ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount, selectedImg: self.$selectedImg, isNotificationShowing: self.$isNotificationShowing)
                     
                     VStack(spacing: 16){
                         Button{
@@ -165,6 +166,28 @@ struct HomeView: View {
                     minHeight: 0,
                     maxHeight: .infinity
                 )
+                
+                if isNotificationShowing{
+                    VStack{
+                        VStack(spacing: 10){
+                            
+                            HStack{
+                                Image(systemName: "exclamationmark.circle")
+                                Text("Palette Colors Copied")
+                                
+                                Spacer()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding(16)
+                            .background(RoundedRectangle(cornerRadius: 12)
+                                .foregroundColor(Color.white)
+                                .shadow(color: Color.black.opacity(0.1 ), radius: 5, x: 0, y: 5))
+                        }
+                        .padding([.leading, .trailing], 20)
+                        
+                        Spacer()
+                    }
+                }
             }
             
         }

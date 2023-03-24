@@ -15,6 +15,7 @@
 		3819586B29940E99007D9019 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3819586A29940E99007D9019 /* LibraryView.swift */; };
 		3819586E29946889007D9019 /* ExtractColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3819586D29946888007D9019 /* ExtractColorPalette.swift */; };
 		3819587129947477007D9019 /* PaletteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3819587029947477007D9019 /* PaletteComponent.swift */; };
+		384B5A8329CD5B990013EACC /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 384B5A8229CD5B990013EACC /* SimpleToast */; };
 		3870FBEB2991B8AB005146A5 /* ColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3870FBEA2991B8AB005146A5 /* ColorKit */; };
 		38ACFCFC299C89AA00082C2A /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFCFB299C89AA00082C2A /* StyleGuide.swift */; };
 		38ACFCFE29A425D200082C2A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFCFD29A425D200082C2A /* ImagePicker.swift */; };
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384B5A8329CD5B990013EACC /* SimpleToast in Frameworks */,
 				3870FBEB2991B8AB005146A5 /* ColorKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +164,7 @@
 			name = "idm-363-zl484";
 			packageProductDependencies = (
 				3870FBEA2991B8AB005146A5 /* ColorKit */,
+				384B5A8229CD5B990013EACC /* SimpleToast */,
 			);
 			productName = "idm-363-zl484";
 			productReference = 38C6E20D298B3A5F00F0ABEC /* idm-363-zl484.app */;
@@ -193,6 +196,7 @@
 			mainGroup = 38C6E204298B3A5F00F0ABEC;
 			packageReferences = (
 				3870FBE92991B8AB005146A5 /* XCRemoteSwiftPackageReference "ColorKit" */,
+				384B5A8129CD5B990013EACC /* XCRemoteSwiftPackageReference "SimpleToast" */,
 			);
 			productRefGroup = 38C6E20E298B3A5F00F0ABEC /* Products */;
 			projectDirPath = "";
@@ -455,6 +459,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		384B5A8129CD5B990013EACC /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanzaru/SimpleToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.2;
+			};
+		};
 		3870FBE92991B8AB005146A5 /* XCRemoteSwiftPackageReference "ColorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boris-Em/ColorKit.git";
@@ -466,6 +478,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		384B5A8229CD5B990013EACC /* SimpleToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 384B5A8129CD5B990013EACC /* XCRemoteSwiftPackageReference "SimpleToast" */;
+			productName = SimpleToast;
+		};
 		3870FBEA2991B8AB005146A5 /* ColorKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3870FBE92991B8AB005146A5 /* XCRemoteSwiftPackageReference "ColorKit" */;

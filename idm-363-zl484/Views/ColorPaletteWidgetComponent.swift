@@ -19,6 +19,7 @@ struct ColorPaletteWidget: View {
     @Binding var colorPalette: [UIColor]
     @Binding var paletteCount:Int
     @Binding var selectedImg:UIImage?
+    @Binding var isNotificationShowing:Bool
     //    @State private var selectedImg:UIImage = UIImage(named: "TestImg_05")!
     @State var palette: [UIColor] = []
     @State var colorArray:[String]?
@@ -121,6 +122,7 @@ struct ColorPaletteWidget: View {
                             }
                             
                             pasteboard.string = copyText
+                            isNotificationShowing = true
                             
                         }
                         else{
@@ -141,8 +143,8 @@ struct ColorPaletteWidget: View {
                         Button("OK", role: .cancel) { }
                     }
                     .alert(isPresented: $cannotExtract) {
-                        Alert(title: Text("Cannot Extract!"),
-                              message: Text("Image format not compatible"),
+                        Alert(title: Text("Cannot Extract"),
+                              message: Text("Image format not compatible, try taking a screenshot of the image"),
                               dismissButton: .default(Text("Got it!")))
                     }
                 }
