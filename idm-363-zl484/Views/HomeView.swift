@@ -41,6 +41,7 @@ struct HomeView: View {
     @Binding var colorPalette:[UIColor]
     @Binding var paletteCount:Int
     @Binding var selectedImg:UIImage?
+    @Binding var copyFormat:Int
     
     @State var isPickerShowing = false
     @State var isCameraShowing = false
@@ -112,7 +113,13 @@ struct HomeView: View {
                 .padding([.leading, .trailing], 20)
                 
                 
-                ColorPaletteWidget(colorPalette: self.$colorPalette, paletteCount: self.$paletteCount, selectedImg: self.$selectedImg, isNotificationShowing: self.$isNotificationShowing)
+                ColorPaletteWidget(
+                    colorPalette: self.$colorPalette,
+                    paletteCount: self.$paletteCount,
+                    selectedImg: self.$selectedImg,
+                    isNotificationShowing: self.$isNotificationShowing,
+                    copyFormat: self.$copyFormat
+                )
                 
                 VStack(spacing: 16){
                     Button{

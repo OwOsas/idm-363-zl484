@@ -15,6 +15,8 @@ struct ContentView: View {
     [.white, .lightGray, .gray , .darkGray,.black]
     @State private var selectedImg: UIImage! = UIImage(named: "")
     @State public var paletteCount = 5;
+    @State public var copyFormat = 1
+    @State public var formatList = ["HEX", "RGB"]
     
     var body: some View {
         
@@ -22,14 +24,16 @@ struct ContentView: View {
             HomeView(
                 colorPalette: self.$colorPalette,
                 paletteCount: self.$paletteCount,
-                selectedImg: self.$selectedImg
+                selectedImg: self.$selectedImg,
+                copyFormat: self.$copyFormat
             )
             
 //            LibraryView()
             
             SettingView(
                 colorPalette: self.$colorPalette,
-                paletteCount: self.$paletteCount
+                paletteCount: self.$paletteCount,
+                copyFormat: self.$copyFormat
             )
             
         }

@@ -20,11 +20,13 @@ struct ColorPaletteWidget: View {
     @Binding var paletteCount:Int
     @Binding var selectedImg:UIImage?
     @Binding var isNotificationShowing:Bool
+    @Binding var copyFormat:Int
     //    @State private var selectedImg:UIImage = UIImage(named: "TestImg_05")!
-    @State var palette: [UIColor] = []
-    @State var colorArray:[String]?
-    @State var failedToCopyAlert: Bool = false
-    @State var cannotExtract: Bool = false
+    @State private var palette: [UIColor] = []
+    @State private var colorArray:[String]?
+    @State private var failedToCopyAlert: Bool = false
+    @State private var cannotExtract: Bool = false
+    @State private var selctedFormat = 1
     
     private let pasteboard = UIPasteboard.general
     
@@ -91,9 +93,9 @@ struct ColorPaletteWidget: View {
                 HStack{
                     Text("Copy Colors")
                     Spacer()
-                    Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Copy Format")) {
-                        Text("HEX").tag(1)
-                        Text("RGB").tag(2)
+                    Picker(selection: $selctedFormat, label: Text("Copy Format")) {
+                        Text("HEX").tag(0)
+                        Text("RGB").tag(1)
                     }
                     .padding([.leading, .trailing], 4)
                     .accentColor(Color("Text"))
@@ -105,20 +107,32 @@ struct ColorPaletteWidget: View {
                             .frame(minWidth: 0, maxWidth: .infinity)
                     )
                     
-                    
                     Button{
-                        //                        print(arrClrToHex(ColorArr: colorPalette) ?? "ERRO Converting")
+                        //print(arrClrToHex(ColorArr: colorPalette) ?? "ERRO Converting")
                         var arr:[String] = []
                         for color in colorPalette{
-                            arr.append(toHex(color:Color(uiColor: color)) ?? "<Cannot Convert>")
+                            if(selctedFormat == 0){
+                                arr.append(toHex(color:Color(uiColor: color)) ?? "<Cannot Convert>")
+                            }
+                            else{
+                                arr.append(toRGB(color:Color(uiColor: color)) ?? "<Cannot Convert>")
+                            }
                         }
                         
                         if !arr.contains("<Cannot Convert>") && !arr.contains("") && colorPalette.count > 0{
                             var copyText = ""
                             
-                            for ele in arr {
-                                copyText += "#\(ele) "
-                                print("\(ele)")
+                            if(selctedFormat == 0){
+                                for ele in arr {
+                                    copyText += "#\(ele) "
+                                    print("\(ele)")
+                                }
+                            }
+                            else{
+                                for ele in arr {
+                                    copyText += "\(ele) "
+                                    print("\(ele)")
+                                }
                             }
                             
                             pasteboard.string = copyText
@@ -146,6 +160,9 @@ struct ColorPaletteWidget: View {
                         Alert(title: Text("Cannot Extract"),
                               message: Text("Image format not compatible, try taking a screenshot of the image"),
                               dismissButton: .default(Text("Got it!")))
+                    }
+                    .onChange(of: copyFormat) { newValue in
+                        selctedFormat = copyFormat
                     }
                 }
             }

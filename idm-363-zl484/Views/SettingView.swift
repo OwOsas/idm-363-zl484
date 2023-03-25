@@ -10,15 +10,16 @@ import SwiftUI
 struct SettingView: View {
     @Binding var colorPalette: [UIColor]
     @Binding var paletteCount:Int
+    @Binding var copyFormat:Int
     
     var body: some View {
         NavigationView{
             VStack{
                 Form{
                     Section(header: Text("Default Settings")){
-                        Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Copy Format")) {
-                            Text("HEX").tag(1)
-                            Text("RGB").tag(2)
+                        Picker(selection: $copyFormat, label: Text("Copy Format")) {
+                            Text("RGB").tag(1)
+                            Text("HEX").tag(2)
                         }
                         
                         Stepper(value: $paletteCount, in: 0...$colorPalette.count) {
