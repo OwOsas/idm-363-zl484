@@ -16,6 +16,7 @@
 		3819586E29946889007D9019 /* ExtractColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3819586D29946888007D9019 /* ExtractColorPalette.swift */; };
 		3819587129947477007D9019 /* PaletteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3819587029947477007D9019 /* PaletteComponent.swift */; };
 		384B5A8329CD5B990013EACC /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 384B5A8229CD5B990013EACC /* SimpleToast */; };
+		384B5A8829CE76FE0013EACC /* copy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 384B5A8729CE76FE0013EACC /* copy.mp3 */; };
 		3870FBEB2991B8AB005146A5 /* ColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3870FBEA2991B8AB005146A5 /* ColorKit */; };
 		38ACFCFC299C89AA00082C2A /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFCFB299C89AA00082C2A /* StyleGuide.swift */; };
 		38ACFCFE29A425D200082C2A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACFCFD29A425D200082C2A /* ImagePicker.swift */; };
@@ -37,6 +38,7 @@
 		3819586A29940E99007D9019 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		3819586D29946888007D9019 /* ExtractColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractColorPalette.swift; sourceTree = "<group>"; };
 		3819587029947477007D9019 /* PaletteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteComponent.swift; sourceTree = "<group>"; };
+		384B5A8729CE76FE0013EACC /* copy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = copy.mp3; sourceTree = "<group>"; };
 		38ACFCFB299C89AA00082C2A /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		38ACFCFD29A425D200082C2A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		38ACFCFF29A7261600082C2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		384B5A8429CE76BA0013EACC /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				384B5A8729CE76FE0013EACC /* copy.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		38ACFCFA299C899300082C2A /* Style */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 		38C6E20F298B3A5F00F0ABEC /* idm-363-zl484 */ = {
 			isa = PBXGroup;
 			children = (
+				384B5A8429CE76BA0013EACC /* Sound */,
 				38ACFCFF29A7261600082C2A /* Info.plist */,
 				38ACFCFA299C899300082C2A /* Style */,
 				38C6E210298B3A5F00F0ABEC /* idm_363_zl484App.swift */,
@@ -214,6 +225,7 @@
 			files = (
 				38C6E218298B3A6000F0ABEC /* Preview Assets.xcassets in Resources */,
 				38C6E215298B3A6000F0ABEC /* Assets.xcassets in Resources */,
+				384B5A8829CE76FE0013EACC /* copy.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

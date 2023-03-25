@@ -122,8 +122,8 @@ struct ColorPaletteWidget: View {
                             }
                             
                             pasteboard.string = copyText
+                            SoundManager.instance.playSound()
                             isNotificationShowing = true
-                            
                         }
                         else{
                             failedToCopyAlert = true
